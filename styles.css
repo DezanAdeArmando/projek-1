@@ -1,0 +1,122 @@
+/* Viewport settings */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Agar bunga tidak melewati batas halaman */
+}
+
+/* Container styling */
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: scale(0.8);
+    animation: fadeIn 2s forwards;
+    max-width: 90vw; /* Batasi lebar container agar lebih fleksibel */
+}
+
+h1 {
+    color: #ff4d4d;
+    font-size: 2rem; /* Menggunakan rem agar ukuran huruf responsif */
+}
+
+#pesan {
+    font-size: 1.5rem;
+    color: #ff4d4d;
+    margin-top: 10px;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Bunga styling */
+.bunga {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fall 3s linear infinite;
+    z-index: 0;
+}
+  
+@keyframes fall {
+    0% {
+      top: -100px;
+    }
+    100% {
+      top: 100vh;
+    }
+}
+  
+.bunga::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ff69b4;
+    animation: spin 2s linear infinite;
+}
+  
+@keyframes spin {
+    0% {
+      transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem; /* Ukuran font lebih kecil di layar kecil */
+    }
+
+    #pesan {
+        font-size: 1.2rem; /* Ukuran font lebih kecil */
+    }
+
+    .container {
+        padding: 15px; /* Kurangi padding di layar kecil */
+    }
+
+    .bunga::before {
+        width: 15px; /* Kurangi ukuran bunga pada layar kecil */
+        height: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem; /* Lebih kecil lagi di layar handphone */
+    }
+
+    #pesan {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 10px; /* Kurangi padding lebih lanjut untuk layar sangat kecil */
+    }
+
+    .bunga::before {
+        width: 12px;
+        height: 12px; /* Bunga lebih kecil di layar handphone */
+    }
+}
